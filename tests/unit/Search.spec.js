@@ -18,3 +18,12 @@ test('Renders a found image message with a given value', async() => {
 
   expect(component.text()).toContain("Found images(" + currentNumberOfImages +")")
 })
+
+test('Should update the found images on submit', async() => {
+  const component = shallowMount(Search)
+  
+  component.find('form').trigger('submit')
+  await component.vm.$nextTick
+
+  expect(component.text()).toContain('Found images(33)')
+})

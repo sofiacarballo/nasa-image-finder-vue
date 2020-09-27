@@ -1,6 +1,11 @@
 <template>
-  <div>
-    Found images({{ numberOfImages }})
+  <div class="search">
+    <form v-on:submit.prevent="makeRequest()">
+
+    </form>
+    <span>
+      Found images({{ numberOfImages }})
+    </span>
   </div>
 </template>
 
@@ -10,6 +15,11 @@ export default {
   data() {
     return {
       numberOfImages: 0
+    }
+  },
+  methods: {
+    makeRequest() {
+      this.numberOfImages = 33
     }
   }
 }
