@@ -1,5 +1,16 @@
 <template>
   <div>
-    Found images(0)
+    Found images({{ numberOfImages }})
   </div>
 </template>
+
+<script>
+export default {
+  name: "Search",
+  data() {
+    return {
+      numberOfImages: 0
+    }
+  }
+}
+</script>
