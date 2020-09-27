@@ -1,5 +1,6 @@
 import { shallowMount } from "@vue/test-utils"
 import Search from '@/components/Search'
+import axios from 'axios'
 
 test('Renders a found image message', () => {
   const component = shallowMount(Search)
@@ -36,4 +37,18 @@ test('Should update found images on submit with the query size', async () => {
   await component.find('form').trigger('submit')
 
   expect(component.text()).toContain('Found images('+ query.length +')')
+})
+
+jest.mock('axios', () => ({
+  get: jest.fn()
+}))
+
+test('Should call the API on submit', async () => {
+  const component = shallowMount(Search)
+  const query = "sun"
+
+  component.setData({ query })
+  await component.find('form').trigger('submit')
+
+  expect(axios.get).toBeCalledWith('https://images-api.nasa.gov/search?media_type=image&q=' + query)
 })
