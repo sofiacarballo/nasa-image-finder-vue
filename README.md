@@ -1,4 +1,4 @@
-# nasa
+# NASA image finder :moon:
 
 ## Project setup
 ```
