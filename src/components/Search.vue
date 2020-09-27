@@ -6,13 +6,19 @@
     <h1>
       Found images({{ numberOfImages }})
     </h1>
+    <Gallery :results="results"/>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import Gallery from "@/components/Gallery";
+
 export default {
   name: "Search",
+  components: {
+    Gallery
+  },
   data() {
     return {
       numberOfImages: 0,

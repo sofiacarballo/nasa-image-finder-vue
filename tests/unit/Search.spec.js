@@ -47,7 +47,7 @@ jest.mock('axios', () => ({
 
 test('Should call the API on submit', async () => {
   const component = shallowMount(Search)
-  const query = "jupyter"
+  const query = "jupiter"
 
   component.setData({ query })
   await component.vm.makeRequest(query)
@@ -57,7 +57,7 @@ test('Should call the API on submit', async () => {
 
 test('Should call on submit and update the results array', async() => {
   const component = shallowMount(Search)
-  const query = "jupyter"
+  const query = "jupiter"
 
   component.setData( { query})
   await component.vm.makeRequest(query)
