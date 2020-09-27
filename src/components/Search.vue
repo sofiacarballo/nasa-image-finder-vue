@@ -1,7 +1,7 @@
 <template>
   <div class="search">
     <form v-on:submit.prevent="makeRequest(query)">
-      <input v-model="query">
+      <input v-model="query" placeholder="Search...">
     </form>
     <h1>
       Found images({{ numberOfImages }})
@@ -42,7 +42,7 @@ export default {
 <style scopped scss>
   .search {
     text-align: center;
-    margin: 200px;
+    margin: 50px;
   }
   .search input {
     padding: 6px;
