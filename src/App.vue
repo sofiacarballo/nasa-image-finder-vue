@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <img class="logo" src="logo.png">
     <Search />
   </div>
 </template>
@@ -35,4 +36,18 @@ h1 {
 	font-size: 24px;
 	text-align: center;
 }	
+
+p {
+  color: #FC3D21;
+}
+
+.logo {
+  display: block;
+  margin-top: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
+  height: 160px;
+}
+
 </style>
