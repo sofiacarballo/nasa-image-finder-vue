@@ -1,5 +1,12 @@
 <template>
-    <div v-if="results.length == 0">No images were found</div>
+    <div v-if="results.length == 0">
+        No images were found
+    </div>
+    <section v-else>
+        <div v-for="(result, key) in results" :key="key">
+            {{ result }}
+        </div>
+    </section>
 </template>
 <script>
 export default {
@@ -7,9 +14,7 @@ export default {
     props: {
         results: {
             type: Array,
-            default: function() {
-                return []
-            }
+            required: true
         } 
     } 
 }
