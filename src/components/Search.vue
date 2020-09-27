@@ -3,9 +3,9 @@
     <form v-on:submit.prevent="makeRequest(query)">
       <input v-model="query">
     </form>
-    <span>
+    <h1>
       Found images({{ numberOfImages }})
-    </span>
+    </h1>
   </div>
 </template>
 
@@ -25,3 +25,16 @@ export default {
   }
 }
 </script>
+
+<style>
+  .search {
+    text-align: center;
+    margin: 200px;
+  }
+  .search input {
+    padding: 6px;
+    margin-bottom: 12px;
+    font-size: 18px;
+    color: #FC3D21;
+  }
+</style> 
