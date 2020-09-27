@@ -1,7 +1,7 @@
 <template>
   <div class="search">
     <form v-on:submit.prevent="makeRequest(query)">
-      <input v-model="query" />
+      <input v-model="query">
     </form>
     <h1>
       Found images({{ numberOfImages }})
