@@ -19,10 +19,11 @@ test('Renders a found image message with a given value', async() => {
   expect(component.text()).toContain("Found images(" + currentNumberOfImages +")")
 })
 
-test('Should update the found images on submit', async() => {
+test('Should filter the found images on submit by the query size', async() => {
   const component = shallowMount(Search)
+  const query = 'jupiter'
   
-  await component.vm.makeRequest()
+  await component.vm.makeRequest(query)
 
-  expect(component.text()).toContain('Found images(33)')
+  expect(component.text()).toContain('Found images('+ query.length+')')
 })

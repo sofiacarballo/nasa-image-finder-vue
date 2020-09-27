@@ -1,6 +1,6 @@
 <template>
   <div class="search">
-    <form v-on:submit.prevent="makeRequest()">
+    <form v-on:submit.prevent="makeRequest(query)">
 
     </form>
     <span>
@@ -18,8 +18,8 @@ export default {
     }
   },
   methods: {
-    makeRequest() {
-      this.numberOfImages = 33
+    makeRequest(query) {
+      this.numberOfImages = query.length
     }
   }
 }
