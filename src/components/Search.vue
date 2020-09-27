@@ -26,7 +26,7 @@ export default {
 }
 </script>
 
-<style>
+<style scopped scss>
   .search {
     text-align: center;
     margin: 200px;
