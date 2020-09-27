@@ -1,6 +1,8 @@
 <template>
 	<div v-if="results.length == 0">
-		No images were found
+		<p>
+			No images were found
+		</p>
 	</div>
 	<div v-else>
 		<div class="gallery display">
@@ -27,8 +29,7 @@ export default {
 .gallery {
 	width: 640px;
 	margin: 0 auto;
-	padding: 5px;
-	background: #fff;
+	padding: 5px 5px;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 .gallery > div {
@@ -39,7 +40,10 @@ export default {
 }
 .gallery > div > img {
 	width: 200px;
-	vertical-align: middle;
+	height: 160px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 	transition: 0.1s transform;
 	transform: translateZ(0); /* hack */
 }
