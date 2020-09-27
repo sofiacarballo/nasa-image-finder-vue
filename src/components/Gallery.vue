@@ -4,7 +4,7 @@
     </div>
     <section v-else>
         <div v-for="(result, key) in results" :key="key">
-            {{ result }}
+            <img :src="result.links[0].href" />
         </div>
     </section>
 </template>
