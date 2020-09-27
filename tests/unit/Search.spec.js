@@ -19,11 +19,21 @@ test('Renders a found image message with a given value', async() => {
   expect(component.text()).toContain("Found images(" + currentNumberOfImages +")")
 })
 
-test('Should filter the found images on submit by the query size', async() => {
+test('Should update found images when the query is changed with the query size', async () => {
   const component = shallowMount(Search)
-  const query = 'jupiter'
-  
+  const query = "jupyter"
+
   await component.vm.makeRequest(query)
 
-  expect(component.text()).toContain('Found images('+ query.length+')')
+  expect(component.text()).toContain('Found images('+ query.length +')')
+})
+
+test('Should update found images on submit with the query size', async () => {
+  const component = shallowMount(Search)
+  const query = "jupyter"
+
+  component.setData({ query })
+  await component.find('form').trigger('submit')
+
+  expect(component.text()).toContain('Found images('+ query.length +')')
 })
