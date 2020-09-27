@@ -2,14 +2,15 @@
 	<div v-if="results.length == 0">
 		No images were found
 	</div>
-	<section v-else>
+	<div v-else>
 		<div class="gallery display">
 			<div v-for="(result, key) in results" :key="key">
 				<img :src="result.links[0].href" />
 			</div>
 		</div>
-	</section>
+	</div>
 </template>
+
 <script>
 export default {
     name: "Gallery",

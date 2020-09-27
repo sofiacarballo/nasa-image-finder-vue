@@ -6,7 +6,7 @@
     <h1>
       Found images({{ numberOfImages }})
     </h1>
-    <Gallery :results="results"/>
+    <Gallery :results="results" />
   </div>
 </template>
 
@@ -31,8 +31,8 @@ export default {
       axios
         .get('https://images-api.nasa.gov/search?media_type=image&q=' + query)
         .then(response => {
-          this.results = response.data.collection.items;
-          this.numberOfImages = this.results.length;
+          this.results = response.data.collection.items
+          this.numberOfImages = this.results.length
       })
     }
   }
