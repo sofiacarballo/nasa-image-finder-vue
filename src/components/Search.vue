@@ -1,7 +1,7 @@
 <template>
   <div class="search">
     <form v-on:submit.prevent="makeRequest(query)">
-      <input v-model="query">
+      <input v-model="query" />
     </form>
     <h1>
       Found images({{ numberOfImages }})
@@ -16,13 +16,18 @@ export default {
   data() {
     return {
       numberOfImages: 0,
-      query: ''
+      query: '',
+      results: []
     }
   },
   methods: {
     makeRequest(query) {
-      axios.get('https://images-api.nasa.gov/search?media_type=image&q=' + query)
-      this.numberOfImages = query.length
+      axios
+        .get('https://images-api.nasa.gov/search?media_type=image&q=' + query)
+        .then(response => {
+          this.results = response.data.collection.items;
+          this.numberOfImages = this.results.length;
+      })
     }
   }
 }

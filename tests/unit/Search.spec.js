@@ -1,6 +1,6 @@
 import { shallowMount } from "@vue/test-utils"
-import Search from '@/components/Search'
-import axios from 'axios'
+import Search from "@/components/Search"
+import axios from "axios"
 
 test('Renders a found image message', () => {
   const component = shallowMount(Search)
@@ -20,35 +20,47 @@ test('Renders a found image message with a given value', async() => {
   expect(component.text()).toContain("Found images(" + currentNumberOfImages +")")
 })
 
-test('Should update found images when the query is changed with the query size', async () => {
-  const component = shallowMount(Search)
-  const query = "jupyter"
-
-  await component.vm.makeRequest(query)
-
-  expect(component.text()).toContain('Found images('+ query.length +')')
-})
-
-test('Should update found images on submit with the query size', async () => {
-  const component = shallowMount(Search)
-  const query = "jupyter"
-
-  component.setData({ query })
-  await component.find('form').trigger('submit')
-
-  expect(component.text()).toContain('Found images('+ query.length +')')
-})
-
 jest.mock('axios', () => ({
-  get: jest.fn()
+  get: jest.fn(() => Promise.resolve({ 
+    data: { 
+        collection: {
+            items: [
+                {
+                    links : [
+                        {
+                            href: 'http://www.this-is-a-link-com'
+                        }
+                    ]
+                },
+                {
+                    links : [
+                        {
+                            href: 'http://www.this-is-another-link-com'
+                        }
+                    ]
+                }
+            ]
+        }  
+    }
+  }))
 }))
 
 test('Should call the API on submit', async () => {
   const component = shallowMount(Search)
-  const query = "sun"
+  const query = "jupyter"
 
   component.setData({ query })
-  await component.find('form').trigger('submit')
+  await component.vm.makeRequest(query)
 
   expect(axios.get).toBeCalledWith('https://images-api.nasa.gov/search?media_type=image&q=' + query)
+})
+
+test('Should call on submit and update the results array', async() => {
+  const component = shallowMount(Search)
+  const query = "jupyter"
+
+  component.setData( { query})
+  await component.vm.makeRequest(query)
+
+  expect(component.vm.numberOfImages).toBe(2)
 })
