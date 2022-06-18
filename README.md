@@ -1,4 +1,5 @@
-# nasa
+# NASA image finder :moon:
+You can check out the app [here](https://nasa-image-finder-vuejs.herokuapp.com/)
 
 ## Project setup
 ```
